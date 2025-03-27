@@ -43,13 +43,15 @@ class Main extends BaseController
  
         return view('komponent', $data);
     }
-    public function informace($idKomponent) {
-        $TypKomponent = new TypKomponent;
+    public function informace($id) {
         $Komponent = new Komponent;
-        $data['komponent'] = $Komponent->asObject()->where("typKomponent_id", $idKomponent)->find();
-        $data['informace'] = $TypKomponent->asObject()->find($idKomponent);
 
-        return view('informace', $data);
+        $data['komponent'] = $Komponent
+            ->join('mt_vyrobce', 'mt_komponent.vyrobce_id = mt_vyrobce.idVyrobce')
+            ->join('mt_typkomponent', 'mt_komponent.typKomponent_id = mt_typkomponent.idKomponent')
+            ->where('mt_komponent.id', $id)
+            ->first();
 
+    return view('informace', $data);
     }
 }
