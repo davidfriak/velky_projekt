@@ -11,5 +11,16 @@
                 <p><strong>Odkaz:</strong> <a href="<?= esc($komponent->odkaz) ?>" target="_blank">Alza</a></p>
             </div>
         </div>
-    </div>
-    <?=$this->endSection();?>
+        <h3 class="mt-4">Technické parametry</h3>
+        <table class="table table-bordered">
+            <tbody>
+                <?php foreach ($parametry as $param): ?>
+                    <tr>
+                        <th><?= esc($param->nazev) ?></th>
+                        <td><?= esc($param->hodnota) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+</div>
+<?=$this->endSection();?>

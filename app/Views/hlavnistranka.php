@@ -8,7 +8,7 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <h5 class="card-title">
-                                <?= anchor('komponent/'.$komponent->idKomponent, esc($komponent->typKomponent)) ?>
+                                <?= anchor('komponent/'.$komponent->idKomponent, esc($komponent->typKomponent), ['class' => 'text-white stretched-link text-decoration-none ']) ?>
                             </h5>
                         </div>
                     </div>
