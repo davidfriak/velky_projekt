@@ -70,6 +70,18 @@ class Main extends BaseController
             ->join('mt_nazevparametr', 'mt_parametr.nazevParametr_id = mt_nazevparametr.id')
             ->where('mt_parametr.komponent_id', $id)
             ->findAll();
-    return view('informace', $data);
+        return view('informace', $data);
+    }
+
+    public function tab() {
+        $typPocitaceModel = new TypPocitace();
+        $vyrobceModel = new Vyrobce();
+        $vyberModel = new Vyber();
+
+        $data['typPocitace'] = $typPocitaceModel->findAll();
+        $data['vyrobce'] = $vyrobceModel->findAll();
+        $data['vyber'] = $vyberModel->findAll();
+
+        return view('tab', $data);
     }
 }
